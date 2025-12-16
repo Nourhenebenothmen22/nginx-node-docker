@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Adoptez le DevOps - Culture et Avantages</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Découvrez la culture DevOps et comment elle transforme le développement logiciel grâce à l'automatisation, la collaboration et la livraison continue.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS INCLUS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    /* HEADER & NAVIGATION */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: rgba(2, 6, 23, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    .logo i {
+      font-size: 1.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #38bdf8;
+      left: 0;
+      bottom: -5px;
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #38bdf8;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #1e293b, #020617);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+      bottom: -50px;
+      left: -50px;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      margin-bottom: 20px;
+      color: #38bdf8;
+      text-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #cbd5e1;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      color: white;
+      padding: 15px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+      background: linear-gradient(90deg, #0ea5e9, #0284c7);
+    }
+
+    .hero-image-container {
+      margin-top: 50px;
+      position: relative;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* FEATURES */
+    .features {
+      padding: 100px 20px;
+      background-color: #0f172a;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+      color: #38bdf8;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #38bdf8;
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #1e293b;
+      padding: 35px 25px;
+      text-align: center;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(56, 189, 248, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 15px 30px rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .card-icon {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      font-size: 2.5rem;
+      color: #38bdf8;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h3 {
+      color: #38bdf8;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+
+    /* BENEFITS SECTION */
+    .benefits {
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+    }
+
+    .benefits-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 25px;
+      background-color: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      border-left: 4px solid #38bdf8;
+    }
+
+    .benefit-icon {
+      color: #38bdf8;
+      font-size: 1.8rem;
+      min-width: 40px;
+    }
+
+    .benefit-content h4 {
+      color: #f8fafc;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .benefit-content p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    /* STATISTICS */
+    .stats {
+      padding: 80px 20px;
+      background-color: #020617;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      max-width: 1000px;
+      margin: 50px auto 0;
+    }
+
+    .stat-item {
+      padding: 25px;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      color: #cbd5e1;
+      font-size: 1.1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 60px 20px 30px;
+      background-color: #020617;
+      border-top: 1px solid rgba(56, 189, 248, 0.1);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      color: #38bdf8;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .footer-section p {
+      color: #94a3b8;
+      margin-bottom: 15px;
+    }
+
+    .footer-section a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.3s;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-section a:hover {
+      color: #38bdf8;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #1e293b;
+      border-radius: 50%;
+      color: #38bdf8;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    .social-icons a:hover {
+      background-color: #38bdf8;
+      color: #0f172a;
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(148, 163, 184, 0.1);
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom p {
+      margin-bottom: 10px;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #020617;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .stat-number {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .cta-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+      }
+      
+      .card {
+        padding: 25px 15px;
+      }
+      
+      .benefit-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-infinity"></i>
+      <span>DevOps Culture</span>
+    </div>
+    
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Accueil</a>
+      <a href="#features">Fonctionnalités</a>
+      <a href="#benefits">Avantages</a>
+      <a href="#stats">Impact</a>
+      <a href="#contact">Contact</a>
+    </div>
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <h1 class="fade-in">🚀 Adoptez la Culture DevOps</h1>
+      <p class="fade-in delay-1">Accélérez le développement, améliorez la qualité et automatisez vos processus pour des livraisons continues et fiables.</p>
+      <a href="#features" class="cta-button fade-in delay-2">Découvrir DevOps</a>
+      
+      <div class="hero-image-container fade-in delay-3">
+        <!-- Placeholder for DevOps illustration -->
+        <div style="background: linear-gradient(135deg, #1e293b, #334155); height: 300px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+          <div style="text-align: center; color: #38bdf8;">
+            <i class="fas fa-sync-alt" style="font-size: 5rem; margin-bottom: 20px;"></i>
+            <h2 style="font-size: 1.8rem;">Cycle DevOps Continu</h2>
+            <p style="color: #cbd5e1; max-width: 500px; margin: 0 auto;">Plan → Développement → Test → Déploiement → Monitoring → Feedback</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURES SECTION -->
+  <section class="features" id="features">
+    <h2 class="section-title">Les Piliers du DevOps</h2>
+    
+    <div class="features-grid">
+      <div class="card fade-in">
+        <div class="card-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <h3>Automatisation</h3>
+        <p>Déployez plus vite grâce aux pipelines CI/CD, à l'infrastructure as code et aux scripts automatisés. Réduisez les erreurs humaines et accélérez les livraisons.</p>
+      </div>
+
+      <div class="card fade-in delay-1">
+        <div class="card-icon">
+          <i class="fas fa-cloud"></i>
+        </div>
+        <h3>Cloud & Scalabilité</h3>
+        <p>Exploitez la puissance du cloud pour des applications flexibles et robustes. Scalez automatiquement selon la charge et optimisez les coûts.</p>
+      </div>
+
+      <div class="card fade-in delay-2">
+        <div class="card-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3>Collaboration</h3>
+        <p>Dev et Ops travaillent ensemble pour livrer mieux et plus vite. Partage des responsabilités, communication transparente et objectifs communs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS SECTION -->
+  <section class="benefits" id="benefits">
+    <div class="benefits-container">
+      <h2 class="section-title">Les Avantages du DevOps</h2>
+      
+      <div class="benefits-grid">
+        <div class="benefit-item fade-in">
+          <div class="benefit-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div class="benefit-content">
+            <h4>Livraisons Rapides</h4>
+            <p>Réduction drastique du temps de déploiement grâce à l'automatisation des processus.</p>
+          </div>
+        </div>
+        
+        <div class="benefit-item fade-in delay-1">
+          <div class="benefit-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="benefit-content">
+            <h4>Fiabilité Accrue</h4>
+            <p>Tests automatisés et monitoring continu assurent la stabilité des applications.</p>
+          </div>
+        </div>
+        
+        <div class="benefit-item fade-in delay-2">
+          <div class="benefit-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="benefit-content">
+            <h4>Évolutivité</h4>
+            <p>Infrastructure élastique qui s'adapte automatiquement à la demande.</p>
+          </div>
+        </div>
+        
+        <div class="benefit-item fade-in delay-3">
+          <div class="benefit-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <div class="benefit-content">
+            <h4>Collaboration Améliorée</h4>
+            <p>Rapprochement des équipes Dev et Ops pour une culture de responsabilité partagée.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATISTICS SECTION -->
+  <section class="stats" id="stats">
+    <h2 class="section-title">L'Impact du DevOps</h2>
+    
+    <div class="stats-grid">
+      <div class="stat-item fade-in">
+        <div class="stat-number">60%</div>
+        <div class="stat-label">Réduction du temps de déploiement</div>
+      </div>
+      
+      <div class="stat-item fade-in delay-1">
+        <div class="stat-number">50x</div>
+        <div class="stat-label">Plus de déploiements fréquents</div>
+      </div>
+      
+      <div class="stat-item fade-in delay-2">
+        <div class="stat-number">3x</div>
+        <div class="stat-label">Moins d'échecs de déploiement</div>
+      </div>
+      
+      <div class="stat-item fade-in delay-3">
+        <div class="stat-number">40%</div>
+        <div class="stat-label">Gain de temps sur les tâches manuelles</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>DevOps Culture</h3>
+        <p>DevOps n'est pas un outil, c'est une mentalité qui transforme la façon dont les organisations développent et livrent des logiciels.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Ressources</h3>
+        <a href="#">Introduction au DevOps</a>
+        <a href="#">Outils essentiels</a>
+        <a href="#">Meilleures pratiques</a>
+        <a href="#">Études de cas</a>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> contact@devops-culture.fr</p>
+        <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +33 1 23 45 67 89</p>
+        <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Paris, France</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>💡 DevOps n'est pas un outil, c'est une mentalité.</p>
+      <p>&copy; 2023 DevOps Culture. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe elements for animation
+    document.querySelectorAll('.card, .benefit-item, .stat-item').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Animate stats numbers
+    const statElements = document.querySelectorAll('.stat-number');
+    
+    const animateStats = () => {
+      statElements.forEach(stat => {
+        const target = parseInt(stat.textContent);
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+          current += increment;
+          if(current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : stat.textContent.includes('x') ? 'x' : '');
+        }, 30);
+      });
+    };
+    
+    // Trigger stats animation when in view
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          animateStats();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    const statsSection = document.querySelector('.stats');
+    if(statsSection) {
+      statsObserver.observe(statsSection);
+    }
+  </script>
+</body>
+</html>
